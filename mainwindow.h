@@ -8,6 +8,7 @@
 #include <QSpinBox>
 #include <QComboBox>
 #include <QLabel>
+#include <QCloseEvent>
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -33,6 +34,7 @@ private slots: //工具栏触发事件
     void SaveTriggered();
     void EraseTriggered();
     void ClearTriggered();
+    void closeEvent(QCloseEvent *event);  //退出QT前询问
 private:
 
     PaintWidget *area;//paintwidget类

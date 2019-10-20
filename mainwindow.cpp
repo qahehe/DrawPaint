@@ -4,6 +4,8 @@
 #include <QActionGroup>
 #include <QToolBar>
 #include <QStringLiteral>  //中文乱码处理
+#include <QMessageBox>
+#include <QApplication>
 
 MainWindow::MainWindow(QWidget *parent) : //主窗口
     QMainWindow(parent)
@@ -217,6 +219,15 @@ void MainWindow::setWidth(int w) //设定笔宽
     area->weight=w;
 }
 
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    int button=QMessageBox::question(this,QStringLiteral("退出程序"),QStringLiteral("确认退出程序"),QMessageBox::Yes | QMessageBox::No);
+    if(button ==QMessageBox::Yes)
+        event->accept();
+    else
+        event->ignore();
+}
 MainWindow::~MainWindow()
 {
 
